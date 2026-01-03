@@ -48,6 +48,13 @@ export function registerInsightsHandlers(
     }
   );
 
+  ipcMain.on(
+    IPC_CHANNELS.INSIGHTS_CANCEL_SESSION,
+    (_, projectId: string) => {
+      insightsService.cancelSession(projectId);
+    }
+  );
+
   ipcMain.handle(
     IPC_CHANNELS.INSIGHTS_CLEAR_SESSION,
     async (_, projectId: string): Promise<IPCResult> => {
